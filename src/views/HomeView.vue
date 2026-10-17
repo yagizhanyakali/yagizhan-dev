@@ -9,8 +9,8 @@ import ProjectsSection from '../components/ProjectsSection.vue'
   <div class="home">
     <HeroSection />
     <AboutSection />
-    <ExperienceSection />
     <ProjectsSection />
+    <ExperienceSection />
   </div>
 </template>
 
