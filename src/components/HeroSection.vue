@@ -3,18 +3,17 @@ import profileImage from '@/assets/yagi.jpeg'
 </script>
 
 <template>
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="profile-picture fade-in-up stagger-1">
-          <img 
-            :src="profileImage" 
-            alt="John Doe"
-            class="profile-img"
-          />
-        </div>
-        <h1 class="hero-name fade-in-up stagger-2">Yagizhan N. Yakali</h1>
-        <p class="hero-title fade-in-up stagger-3">Software Engineer</p>
+  <section id="top" class="hero">
+    <div class="container hero-content">
+      <img :src="profileImage" alt="Yagizhan N. Yakali" class="avatar" />
+      <h1 class="name">Yagizhan N. Yakali</h1>
+      <p class="title">
+        Software Engineer based in Berlin. I build robust backend systems and simple, fast
+        applications.
+      </p>
+      <div class="actions">
+        <a href="#projects" class="btn btn-primary">View projects</a>
+        <a href="#contact" class="btn">Get in touch</a>
       </div>
     </div>
   </section>
@@ -22,94 +21,42 @@ import profileImage from '@/assets/yagi.jpeg'
 
 <style scoped>
 .hero {
-  padding: 0 0 4rem;
-  text-align: center;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+  padding: 5rem 0 4.5rem;
 }
 
 .hero-content {
-  max-width: 600px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
 }
 
-.profile-picture {
-  margin-bottom: 2rem;
-}
-
-.profile-img {
-  width: 200px;
-  height: 200px;
+.avatar {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid var(--color-background-soft);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
+  border: 1px solid var(--color-border);
 }
 
-.profile-img:hover {
-  transform: scale(1.05);
-}
-
-.hero-name {
-  font-size: 3rem;
+.name {
+  font-size: clamp(2.25rem, 8vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
   font-weight: 700;
-  color: var(--color-heading);
-  margin-bottom: 0.5rem;
-  background: linear-gradient(
-    45deg,
-    #00D4FF,
-    #FF6B6B,
-    #4ECDC4,
-    #45B7D1,
-    #96CEB4,
-    #FFEAA7,
-    #DDA0DD,
-    #00D4FF
-  );
-  background-size: 400% 400%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientShift 4s ease-in-out infinite;
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.hero-title {
-  font-size: 1.5rem;
+.title {
+  font-size: 1.25rem;
+  line-height: 1.5;
   color: var(--color-text-muted);
-  font-weight: 400;
-  margin-bottom: 0;
+  max-width: 560px;
 }
 
-@media (max-width: 768px) {
-  .hero {
-    padding: 4rem 0 3rem;
-  }
-  
-  .profile-img {
-    width: 150px;
-    height: 150px;
-  }
-  
-  .hero-name {
-    font-size: 2.5rem;
-  }
-  
-  .hero-title {
-    font-size: 1.25rem;
-  }
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
 }
 </style>

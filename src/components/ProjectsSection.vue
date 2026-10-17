@@ -41,117 +41,75 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="projects" class="section projects">
+  <section id="projects" class="section">
     <div class="container">
-      <h2 class="animate-on-scroll">Projects</h2>
+      <h2 class="section-title">Selected projects</h2>
       <div ref="projectsRef" class="projects-grid animate-on-scroll">
-        <div 
-          v-for="(project, index) in projects" 
-          :key="index" 
+        <a
+          v-for="project in projects"
+          :key="project.title"
+          :href="project.link"
+          target="_blank"
+          rel="noopener noreferrer"
           class="project-card"
         >
-          <h3 class="project-title">{{ project.title }}</h3>
+          <div class="card-top">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7" /><path d="M8 7h9v9" /></svg>
+          </div>
           <p class="project-description">{{ project.description }}</p>
-          <a :href="project.link" class="project-link">
-            {{ project.linkText }} →
-          </a>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.projects {
-  background: var(--color-background);
-  padding: 0;
-  margin-bottom: 5rem;
-}
-
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .project-card {
-  background: var(--color-background-soft);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  flex: 1 1 300px;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  height: 100%;
-}
-
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-accent), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-card);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  color: var(--color-heading);
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .project-card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+  background: #fafafa;
+  border-color: #d4d4d8;
+  color: var(--color-heading);
 }
 
-.project-card:hover::before {
-  opacity: 1;
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-text-muted);
 }
 
 .project-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-heading);
-  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
 }
 
 .project-description {
-  color: var(--color-text);
+  font-size: 0.875rem;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
-}
-
-.project-link {
-  color: var(--color-accent);
-  text-decoration: none;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-  margin-top: auto;
-}
-
-.project-link:hover {
-  color: var(--color-heading);
-  transform: translateX(4px);
-}
-
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .project-card {
-    padding: 1.5rem;
-  }
-  
-  .project-title {
-    font-size: 1.1rem;
-  }
+  color: var(--color-text-muted);
 }
 </style>
